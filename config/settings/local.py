@@ -11,7 +11,7 @@ SECRET_KEY = env(
     default="cMtOiqUZSqq1CIA0d3SlXZNBpwAhu7Zp3FH3zB784Y1jm7L5f6Wd9p5XFALsRnrX",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1","binod.pythonanywhere.com"]
 
 # CACHES
 # ------------------------------------------------------------------------------
