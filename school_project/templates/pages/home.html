@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  
+    <!-- main-area -->
+    <main>
+        
+        <!-- search-popup -->
+    <div class="modal fade bs-example-modal-lg search-bg popup1" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content search-popup">
+                <div class="text-center">
+                    <a href="#" class="close2" data-dismiss="modal" aria-label="Close">× close</a>
+                </div>
+                <div class="row search-outer">
+                    <div class="col-md-11"><input type="text" placeholder="Search for products..." /></div>
+                    <div class="col-md-1 text-right"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /search-popup -->
+        <!-- slider-area -->
+        <section id="home" class="slider-area slider-four fix p-relative">
+           
+            <div class="slider-active">
+            <div class="single-slider slider-bg d-flex align-items-center" style="background-image: url('{% static 'img/slider/slider_img_bg.png' %}'); no-repeat;background-position: center center;">
+                    <div class="container"> 
+                       <div class="row justify-content-center pt-50  pb-150">
+                            <div class="col-lg-7">
+                                <div class="slider-content s-slider-content mt-200">
+                                 
+                                     <h2 data-animation="fadeInUp" data-delay=".4s">{{info.sayings}}!</h2>
+                                    <p data-animation="fadeInUp" data-delay=".6s">{{info.sayings_description}}</p>
+                                    
+                                    <div class="subricbe" data-animation="fadeInDown" data-delay=".4s">
+                                        <form action="news-mail.php" method="post" class="contact-form ">
+                                        <label><i class="icon fal fa-details"></i>Our Information</label> <label><i class="icon fal fa-envelope"></i> {{info.email}} </label>
+                                        {% comment %} <label><i class="icon fal fa-phone"></i> {% for phone_number in info.phone_number %} {{phone_number}}  {%endfor %} </label> {% endcomment %}
+
+                                        <button class="btn header-btn"> Contact us</button>
+                                        </form>
+                                    </div>
+                                                          
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="slider-img" data-animation="fadeInUp" data-delay=".4s">
+                               <img src="{% static 'img/slider/slider_img05.png' %}" alt="slider_img05">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                
+                </div>
+                
+           
+        </section>
+        <!-- slider-area-end -->
+        <!-- about-area -->
+        <section id="about" class="about-area about-p pt-70 pb-120 p-relative" style="background-image: url('{% static 'img/features/about-bg-aliments.png' %}'); no-repeat;background-position: center center;">
+            <div class="container">
+                <div class="row align-items-center">
+                     <div class="col-lg-6 col-md-12 col-sm-12 pr-30">
+                        <div class="s-about-img p-relative  wow fadeInLeft  animated"   data-animation="fadeInLeft" data-delay=".4s">
+                            <img src="{{info.about_image.url}}" alt="img">    
+                            <div class="about-text second-about">
+                                <div class="all-text">
+                                    <h3>{{info.our_experience}}</h3>
+                                <span>years of <br> experience</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                      
+                    </div>
+                    
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="about-content s-about-content  wow fadeInRight  animated" data-animation="fadeInRight" data-delay=".4s">
+                            <div class="about-title second-atitle pb-25">   
+                                <h5>About</h5>
+                                <h2>Welcome To {{info.school_name}}</h2>   
+                            </div>
+                            
+                            <p>{{info.about_school}}</p>
+                           
+                            <div class="about-content3">
+                                <div class="row">
+                                <div class="col-md-12">
+                                 <ul class="green">
+                                           <li>Nulla pellentesque posuere metus, sed hendrerit purus venenatis in. Sed at vestibulum magna.</li>
+                                            <li>Etiam quis lacinia ipsum. Aliquam blandit, mauris nec molestie interdum, quam massa finibus turpis, ut eleifend tellus massa eget nunc.</li>            
+                                       </ul>
+                                </div>
+                                
+                                </div>
+                                
+                            
+                            </div>
+                          
+                           <div class="slider-btn mt-10">                                          
+                                    </div>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </section>
+        <!-- about-area-end -->
+        
+         <!-- featured-courses-area -->          
+        <section id="courses" class="courses-area fix"  >
+            <div class="container-fluid">
+                <div class="row">   
+                    <div class="col-lg-12">
+                        <div class="section-title center-align text-center mb-50">
+                            <h5>Interesting subjects </h5>
+                            <h2>
+                            Latest Subjects
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-lg-12 col-md-12">
+                         
+                       <div class="featured-courses-active">
+                           {% for subject in subjects %}
+                           <div class="box-courses">
+                               <a href="{% url 'basic:news_single' subject.id %}"><img src="{{subject.image.url}}" alt="courses-img1"></a>
+                               <div class="text">
+                                    <h5>{{subject.class_duration}} hours- {{subject.subject_type}}</h5>
+                                   <h3><a href="{% url 'basic:news_single' subject.id %}">{{subject.name}}</a></h3>
+                               </div>
+                           </div>
+                           {% endfor %}
+
+                            
+                        </div>
+                         
+                     
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+        <!-- featured-courses-area-end -->
+         <!-- testimonial-area -->
+        <section class="testimonial-area pt-120 pb-120" style=" background-image: url(img/testimonial/test-bg-aliments.png); background-repeat: no-repeat; background-position: center; background-color: #fff7f5;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="about-title second-atitle pt-15">            
+                                <h5>Our Parents/Students Feedback</h5>                
+                                <h2>
+                                   See What Our <br>Client Say’s
+                                </h2>   
+                            </div>
+                       
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="testimonial-active">
+                            {% for feedback in feedbacks %}
+                            <div class="single-testimonial">
+                                 <div class="testi-author">
+                                    <img src="{{feedback.image.url}}" alt="img">
+                                    <div class="ta-info">
+                                        <h6>{{feedback.name}}</h6>
+                                        <span>{{feedback.position}}</span>
+                                    </div>
+                                </div>
+                                <p>{{feedback.feedback}}</p>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- testimonial-area-end -->
+       
+        
+        
+          <!-- blog-area -->
+        <section id="blog" class="blog-area  p-relative pt-120 pb-90 fix" style=" background-image: url(img/bg/blog-bg-aliments.png); background-repeat: no-repeat; background-position: center;">
+            <div class="container">
+                <div class="row align-items-center"> 
+                    <div class="col-lg-12">
+                        <div class="col-lg-12">
+                        <div class="section-title center-align text-center mb-50">
+                            <h5>Our Latest News</h5>
+                            <h2>
+                            Latest News Feed
+                            </h2>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for news in latest_news %}
+                    <div class="col-lg-4 col-md-12">
+                        <div class="single-post2 mb-30  wow fadeInDown  animated">
+                            <div class="blog-thumb2">
+                                <a href="{% url 'basic:news_single' news.id %}"><img src="{{news.image.url}}" alt="img"></a>
+                                
+                            </div>
+                            <div class="blog-content2 text-center">     
+                                <div class="b-meta">
+                                   <div class="row">
+                                         <div class="col-lg-12 col-md-12">
+                                             <div class="date-b">
+                                                <i class="fal fa-calendar-alt"></i> {{news.created_date}}
+                                             </div>
+                                          
+                                         </div>
+                                        
+                                     </div>
+                                </div>
+                                
+                                 <div class="row">
+                                    <div class="col-lg-12">
+                                     <h4><a href="{% url 'basic:news_single' news.id %}">{{news.title}}</a></h4>    
+                                       <div class="blog-btn"><a href="{% url 'basic:news_single' news.id %}"><i class="fal fa-chevron-circle-right"></i> Read More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- blog-area-end -->
+      
+     
+     
+    </main>
+    <!-- main-area-end -->
+{% endblock %}

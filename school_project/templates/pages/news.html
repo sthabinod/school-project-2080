@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area d-flex align-items-center" style="background-image: url('{% static 'img/testimonial/test-bg.png' %}')">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="breadcrumb-wrap text-left">
+                                <div class="breadcrumb-title">
+                                    <h2>Blog</h2>    
+                                    <div class="breadcrumb-wrap">
+                              
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+            <!-- inner-blog -->
+            <section class="inner-blog pt-120 pb-120">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8">
+
+                            {% for n in news %}
+                            <div class="bsingle__post mb-50">
+                                <div class="bsingle__post-thumb">
+                                    <img src="{{n.image.url}}" alt="">
+                                </div>
+                                <div class="bsingle__content">
+                                    <div class="admin">
+                                        <a href="#"><i class="far fa-user"></i> by {{n.created_by.name}}</a>
+                                    </div>
+                                    
+                                    
+                                    <h2><a href="blog-details.html">{{n.title}}</a></h2>
+                                    <p>{{n.description}}</p>
+                                    <div class="meta-info">
+                                        <ul>
+                                            <li><i class="fal fa-calendar-alt"></i> {{n.created_date}}</li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            
+                            
+                        </div>
+                        <!-- #right side -->
+<div class="col-sm-12 col-md-12 col-lg-4">
+   <aside class="sidebar-widget">
+      <section id="search-3" class="widget widget_search">
+         <h2 class="widget-title">Search</h2>
+         <form role="search" method="get" class="search-form" action="http://wordpress.zcube.in/finco/">
+            <label>
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+            </label>
+            <input type="submit" class="search-submit" value="Search" />
+         </form>
+      </section>
+      <section id="custom_html-5" class="widget_text widget widget_custom_html">
+         <h2 class="widget-title">Follow Us</h2>
+         <div class="textwidget custom-html-widget">
+            <div class="widget-social">
+               <a href="#"><i class="fab fa-twitter"></i></a>
+               <a href="#"><i class="fab fa-pinterest-p"></i></a>
+               <a href="#"><i class="fab fa-facebook-f"></i></a>
+               <a href="#"><i class="fab fa-instagram"></i></a>
+               <a href="#"><i class="fab fa-wordpress"></i></a>
+            </div>
+         </div>
+      </section>
+      <section id="categories-1" class="widget widget_categories">
+         <h2 class="widget-title">Categories</h2>
+         <ul>
+            <li class="cat-item cat-item-16"><a href="#">Branding</a> (4)</li>
+            <li class="cat-item cat-item-23"><a href="#">Corporat</a> (3)</li>
+            <li class="cat-item cat-item-18"><a href="#">Design</a> (3)</li>
+            <li class="cat-item cat-item-22"><a href="#">Gallery</a> (3)</li>
+         </ul>
+      </section>
+      <section id="recent-posts-4" class="widget widget_recent_entries">
+         <h2 class="widget-title">Recent Posts</h2>
+         <ul>
+            {% for news in recent_news %}
+            <li>
+               <a href="#">{{news.title}}</a>
+               <span class="post-date">{{news.created_date}}</span>
+            </li>
+            {%endfor%}
+           
+         </ul>
+      </section>
+      
+   </aside>
+</div>
+<!-- #right side end -->
+
+                    </div>
+                </div>
+            </section>
+            <!-- inner-blog-end -->
+      
+         
+         
+        </main>
+        <!-- main-area-end -->
+       {% endblock %}

@@ -1,0 +1,157 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- /search-popup -->
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area d-flex align-items-center" style="background-color:#D3D3D3;" >
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="breadcrumb-wrap text-left">
+                                <div class="breadcrumb-title">
+                                    <h2>About Us</h2>    
+                                    <div class="breadcrumb-wrap">
+                              
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+           <!-- about-area -->
+        <section id="about" class="about-area about-p pt-70 pb-120 p-relative" style="background: url(img/features/about-bg-aliments.png) no-repeat;background-position: center center;">
+            <div class="container">
+                <div class="row align-items-center">
+                     <div class="col-lg-6 col-md-12 col-sm-12 pr-30">
+                        <div class="s-about-img p-relative  wow fadeInLeft  animated"   data-animation="fadeInLeft" data-delay=".4s">
+                            <img src="{{info.about_image.url}}" alt="img">    
+                            <div class="about-text second-about">
+                                <div class="all-text">
+                                    <h3>{{info.our_experience}}</h3>
+                                <span>years of <br> experience</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                      
+                    </div>
+                    
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="about-content s-about-content  wow fadeInRight  animated" data-animation="fadeInRight" data-delay=".4s">
+                            <div class="about-title second-atitle pb-25">   
+                                <h5>About</h5>
+                                <h2>Welcome To {{info.school_name}}</h2>   
+                            </div>
+                            
+                            <p>{{info.about_school}}</p>
+                           
+                            <div class="about-content3">
+                                <div class="row">
+                                <div class="col-md-12">
+                                 <ul class="green">
+                                           <li>Nulla pellentesque posuere metus, sed hendrerit purus venenatis in. Sed at vestibulum magna.</li>
+                                            <li>Etiam quis lacinia ipsum. Aliquam blandit, mauris nec molestie interdum, quam massa finibus turpis, ut eleifend tellus massa eget nunc.</li>            
+                                       </ul>
+                                </div>
+                                
+                                </div>
+                                
+                            
+                            </div>
+                          
+                           <div class="slider-btn mt-10">                                          
+                                    </div>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </section>
+        <!-- about-area-end -->
+        
+             <!-- vedio-area -->          
+            <section id="vedio" class="vedio-area pt-120 pb-90 fix" style="background-image: url('{% static 'img/video/vedio-bg.png' %}'); background-repeat: no-repeat;">
+                <div class="container">
+                    <div class="row">   
+                        <div class="col-lg-12">
+                            <div class="section-title center-align text-center">
+                                <h5>Our Video</h5>
+                                <h2>
+                              Watch our video for more information
+                                </h2>
+                            </div>
+                           
+                        </div>
+                         
+                    </div>
+                    <div class="row">
+                         <div class="col-lg-12 col-md-12">
+                             
+                           <div class="video-img wow fadeInRight animated" data-animation="fadeInDown animated" data-delay=".2s" style="background-image: url('{% static 'img/video/vedio-img.png' %}');  background-repeat: no-repeat; background-position: center;">								
+                                    <a href="https://www.youtube.com/watch?v=gyGsPlt06bo" class="video-i popup-video"> <img src="img/video/play.svg" alt="img" class="active-icon"></a>
+                            </div> 
+                             
+                         
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </section>
+            <!-- vedio-area-end -->
+            <!-- team-area -->
+            <section id="team" class="team-area pb-90 fix" style=" background-image: url(img/bg/services-bg-aliments.png); background-repeat: no-repeat; background-position: center;">             
+                <div class="container">   
+                      <div class="row align-items-center"> 
+                        <div class="col-lg-12">
+                            <div class="col-lg-12">
+                            <div class="section-title center-align text-center mb-50">
+                                <h5>Our Team</h5>
+                                <h2>
+                                Our Team Members
+                                </h2>
+                            </div>
+                           
+                        </div>
+                          
+                           
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for team in teams %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-team text-center mb-30 ">
+                                <div class="team-thumb">
+                                  <div class="brd">
+                                        <img src="{{team.image.url}}" alt="img">
+                                    </div>
+                                </div>
+                                <div class="team-info">
+                                    <h4><a href="team-details.html">{{team.name}}</a></h4>
+                                    <span>{{team.position}}</span>
+                                    <div class="team-social mt-20">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+			
+         
+        </main>
+        <!-- main-area-end -->
+    
+{% endblock %}
