@@ -13,12 +13,12 @@
                <div class="col-xl-7 col-lg-7 col-sm-12">
                    <div class="footer-widget footer-link mt-20 text-center">
                            <ul>                                        
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html"> About Us</a></li>
-                               <li><a href="services.html"> Courses </a></li>
-                               <li><a href="contact.html"> Events</a></li>
-                               <li><a href="blog.html">Blog </a></li>
-                               <li><a href="blog.html">Contact Us </a></li>
+                               <li><a href="{% url 'basic:home_page' %}">Home</a></li>
+                               <li><a href="{% url 'basic:about_page' %}"> About Us</a></li>
+                               <li><a href="{% url 'basic:subject_page' %}"> Subject we teach </a></li>
+                               <li><a href="{% url 'basic:event_page' %}"> Events</a></li>
+                               <li><a href="{% url 'basic:news_page' %}">News </a></li>
+                               <li><a href="{% url 'basic:contact_page' %}">Contact Us </a></li>
                            </ul>
                       
                        
@@ -64,7 +64,7 @@
                            </li>
                            <li>
                                <i class="icon fal fa-phone"></i>
-                               <span>{{info.phone_number.phone_number}}</span>
+                               <span>{{info.phone_number}}</span>
                            </li>
                           <li><i class="icon fal fa-envelope"></i>
                                <span>
@@ -86,11 +86,11 @@
                        </div>
                        <div class="footer-link">
                            <ul>                                        
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html"> About Us</a></li>
-                               <li><a href="services.html"> Services </a></li>
-                               <li><a href="contact.html"> Contact Us</a></li>
-                               <li><a href="blog.html">Blog </a></li>
+                               <li><a href="{% url 'basic:home_page' %}">Home</a></li>
+                               <li><a href="{% url 'basic:about_page' %}"> About Us</a></li>
+                               <li><a href="{% url 'basic:subject_page' %}"> Subject we teach </a></li>
+                               <li><a href="{% url 'basic:contact_page' %}"> Contact Us</a></li>
+                               <li><a href="{% url 'basic:news_page' %}">News </a></li>
                            </ul>
                        </div>
                    </div>
@@ -105,7 +105,7 @@
                        <div class="f-insta">
                            <ul>
                                {% for image in gallery %}
-                               <li><a href="img/instagram/f-galler-01.png" class=" popup-image"><img src="{{image.image.url}}" alt="img"></a></li>
+                               <li><a href="#" class=" popup-image"><img src="{{image.image.url}}" alt="img"></a></li>
                                {% endfor %}
                            </ul>
                        </div>

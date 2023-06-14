@@ -2,23 +2,8 @@
 {% load static %}
 {% block content %}
   
-    <!-- main-area -->
     <main>
-        
-        <!-- search-popup -->
-    <div class="modal fade bs-example-modal-lg search-bg popup1" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content search-popup">
-                <div class="text-center">
-                    <a href="#" class="close2" data-dismiss="modal" aria-label="Close">× close</a>
-                </div>
-                <div class="row search-outer">
-                    <div class="col-md-11"><input type="text" placeholder="Search for products..." /></div>
-                    <div class="col-md-1 text-right"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <!-- /search-popup -->
         <!-- slider-area -->
         <section id="home" class="slider-area slider-four fix p-relative">
@@ -36,9 +21,9 @@
                                     <div class="subricbe" data-animation="fadeInDown" data-delay=".4s">
                                         <form action="news-mail.php" method="post" class="contact-form ">
                                         <label><i class="icon fal fa-details"></i>Our Information</label> <label><i class="icon fal fa-envelope"></i> {{info.email}} </label>
-                                        {% comment %} <label><i class="icon fal fa-phone"></i> {% for phone_number in info.phone_number %} {{phone_number}}  {%endfor %} </label> {% endcomment %}
+                                        <label><i class="icon fal fa-phone"></i> {{info.phone_number}}   </label>
 
-                                        <button class="btn header-btn"> Contact us</button>
+                                        <a href="{% url 'basic:contact_page' %}"> <button class="btn header-btn"> Contact us</button></a>
                                         </form>
                                     </div>
                                                           
@@ -46,7 +31,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="slider-img" data-animation="fadeInUp" data-delay=".4s">
-                               <img src="{% static 'img/slider/slider_img05.png' %}" alt="slider_img05">
+                               <img src="{% static '' %}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -90,8 +75,6 @@
                                 <div class="row">
                                 <div class="col-md-12">
                                  <ul class="green">
-                                           <li>Nulla pellentesque posuere metus, sed hendrerit purus venenatis in. Sed at vestibulum magna.</li>
-                                            <li>Etiam quis lacinia ipsum. Aliquam blandit, mauris nec molestie interdum, quam massa finibus turpis, ut eleifend tellus massa eget nunc.</li>            
                                        </ul>
                                 </div>
                                 

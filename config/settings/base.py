@@ -146,7 +146,7 @@ MIDDLEWARE = [
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(BASE_DIR / "staticfiles")
+STATIC_ROOT = str(BASE_DIR / "staticfiles_build")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
@@ -281,3 +281,11 @@ SOCIALACCOUNT_FORMS = {"signup": "school_project.users.forms.UserSocialSignupFor
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# Email configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_PORT = 587  
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sikaai30000@gmail.com'  
+EMAIL_HOST_PASSWORD = 'yidmeybwkhdwhowh' 

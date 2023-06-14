@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from school_project.basic.models import Information,SubjectWeTeach, Feedback,News,Gallery,Team,Events, Contact,GalleryCategory
 from django.contrib import messages
+from django.core.mail import send_mail
+from config.settings.base import EMAIL_HOST_USER
 
 class HomePage(View):
     def get(self,request, *args, **kwargs):
@@ -96,8 +98,9 @@ class ContactPage(View):
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         message = request.POST.get('message')
-        
-        contact = Contact.objects.create(first_name=first_name,last_name=last_name,email=email,phone_number=phone,comments=message)
+        subject = request.POST.get('subject')
+        send_mail(subject, message, EMAIL_HOST_USER, [email],fail_silently=False)
+        contact = Contact.objects.create(first_name=first_name,last_name=last_name,email=email,phone_number=phone,comments=message,subject=subject)
         messages.success(request,"Thank you for reaching us, we will contact you soon!")
         
         return render(request, 'pages/contact.html')
@@ -131,6 +134,7 @@ class CatgoryWiseGallery(View):
     def get(self,request, id, *args, **kwargs):
         info = Information.objects.get(id=1)
         galleries = Gallery.objects.filter(category=id)
+        print(galleries)
         gallery = Gallery.objects.all()[:4]
         gallery_categories = GalleryCategory.objects.all()
         data = {
@@ -139,7 +143,7 @@ class CatgoryWiseGallery(View):
             'gallery':gallery,
              'gallery_categories':gallery_categories
             }
-        return render(request, 'pages/gallery_detail.html',data)
+        return render(request, 'pages/gallery.html',data)
     
 class NewsSingle(View):
     def get(self,request, id, *args, **kwargs):

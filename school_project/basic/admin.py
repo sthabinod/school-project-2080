@@ -1,5 +1,5 @@
 from django.contrib import admin
-from school_project.basic.models import Information,MoreAbout,PhoneNumber,Team,Feedback,News,Events,Gallery,GalleryCategory,Contact,SubjectWeTeach
+from school_project.basic.models import Information,Team,Feedback,News,Events,Gallery,GalleryCategory,Contact,SubjectWeTeach
 
 
 admin.site.site_header = 'School Project'
@@ -13,16 +13,6 @@ class InformationAdmin(admin.ModelAdmin):
             return False
         else:
             return True
-
-
-@admin.register(MoreAbout)
-class MoreAboutAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(PhoneNumber)
-class PhoneNumberAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(Team)

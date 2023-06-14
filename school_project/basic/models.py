@@ -1,18 +1,7 @@
 from django.db import models
 from school_project.users.models import User
 
-class MoreAbout(models.Model):
-    paragraph = models.CharField(max_length=200)
-    
-    def __str__(self) -> str:
-        return self.paragraph
 
-
-class PhoneNumber(models.Model):
-    phone_number = models.CharField(max_length=30)
-    
-    def __str__(self) -> str:
-        return self.phone_number
 
 class Information(models.Model):
     school_name = models.CharField(max_length=100)
@@ -22,8 +11,7 @@ class Information(models.Model):
     email = models.EmailField(max_length=200)
     location = models.CharField(max_length=200)
     about_school = models.TextField()
-    more_about = models.ForeignKey(MoreAbout,on_delete=models.CASCADE)
-    phone_number = models.ManyToManyField(PhoneNumber)
+    phone_number = models.CharField(max_length=40)
     our_experience = models.IntegerField()
     about_image = models.ImageField(null=True,blank=True)
     facebook_url = models.URLField(blank=True,null=True)
@@ -135,9 +123,10 @@ class Gallery(models.Model):
 class Contact(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=100)
     comments = models.TextField()
     
     def __str__(self) -> str:
-        return self.email
+        return self.first_name +" " +self.last_name
