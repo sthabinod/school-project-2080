@@ -10,7 +10,10 @@ from school_project.basic.views import (
    GalleryPage,
    GalleryDetail,
    CatgoryWiseGallery,
-   NewsSingle
+   NewsSingle,
+   PrincipalMessageView,
+   MoreAbout,
+   DirectorMessageView
 )
 
 app_name = "basic"
@@ -25,4 +28,7 @@ urlpatterns = [
     path("gallery/<int:id>", GalleryDetail.as_view(), name="gallery_detail"),
     path("gallery-category/<int:id>", CatgoryWiseGallery.as_view(), name="category_gallery"),
     path("news/<int:id>", NewsSingle.as_view(), name="news_single"),
+    path("principal/", PrincipalMessageView.as_view(), name="principal_message"),
+    path("director/", DirectorMessageView.as_view(), name="director_message"),
+    path("more-about/", MoreAbout.as_view(), name="more-about"),
 ]

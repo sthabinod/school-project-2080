@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- /search-popup -->
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area d-flex align-items-center" style="background-color:#D3D3D3;" >
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="breadcrumb-wrap text-left">
+                                <div class="breadcrumb-title">
+                                    <h2 style="color:#04AF70;">Principal Message</h2>    
+                                    <div class="breadcrumb-wrap">
+                              
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Message</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+           <!-- about-area -->
+        <section id="about" class="about-area about-p pt-70 pb-120 p-relative" style="background: url(img/features/about-bg-aliments.png) no-repeat;background-position: center center;">
+            <div class="container">
+                <div class="row align-items-center">
+                    
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="about-content s-about-content  wow fadeInRight  animated" data-animation="fadeInRight" data-delay=".4s">
+                            <div class="about-title second-atitle pb-25">   
+                                <h5 style="color:#00008B;">Messgage</h5>
+                                <h2 style="color:#00008B;">Message from Principal</h2>   
+                            </div>
+                            
+                            {% for message in principal_message %}
+                                <p style="text-align: justify;">{{message.principal_message}}</p>
+                            {% endfor %}
+
+                            <h4><a href="{% url 'basic:home_page' %}">Go back...</a></h4>
+                            <div class="about-content3">
+                                <div class="row">
+                                <div class="col-md-12">
+                                 <ul class="green">
+                                       </ul>
+                                </div>
+                                
+                                </div>
+                                
+                            
+                            </div>
+                          
+                           <div class="slider-btn mt-10">                                          
+                                    </div>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </section>
+        <!-- about-area-end -->
+        
+        </main>
+        <!-- main-area-end -->
+    
+{% endblock %}

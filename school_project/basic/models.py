@@ -6,13 +6,18 @@ from school_project.users.models import User
 class Information(models.Model):
     school_name = models.CharField(max_length=100)
     school_logo = models.ImageField(null=True,blank=True)
+    principal_name = models.CharField(max_length=100)
+    principal_image = models.ImageField(null=True, blank=True)
+    director_name = models.CharField(max_length=100)
+    director_image = models.ImageField(null=True, blank=True)
     sayings= models.CharField(max_length=100)
     sayings_description = models.CharField(max_length=250)
     email = models.EmailField(max_length=200)
     location = models.CharField(max_length=200)
-    about_school = models.TextField()
     phone_number = models.CharField(max_length=40)
     our_experience = models.IntegerField()
+    mission = models.TextField()
+    vision = models.TextField()
     about_image = models.ImageField(null=True,blank=True)
     facebook_url = models.URLField(blank=True,null=True)
     instagram_url = models.URLField(blank=True,null=True)
@@ -34,9 +39,29 @@ class Information(models.Model):
             self.pk = self.__class__.objects.first().pk
         super().save(*args, **kwargs)
         
+class PrincipalMessage(models.Model):
+    principal_message = models.TextField()
+    school = models.ForeignKey(Information, on_delete=models.CASCADE)
+    
+    
+class DirectorMessage(models.Model):
+    director_message = models.TextField()
+    school = models.ForeignKey(Information, on_delete=models.CASCADE)
+
+class AboutSchool(models.Model):
+    about = models.TextField()
+    school = models.ForeignKey(Information, on_delete=models.CASCADE)
+        
 class Team(models.Model):
     name = models.CharField(max_length=100)
     position =  models.CharField(max_length=100)
+    image = models.ImageField(blank=True)
+    
+    def __str__(self) -> str:
+        return self.name
+    
+class BOD(models.Model):
+    name = models.CharField(max_length=100)
     image = models.ImageField(blank=True)
     
     def __str__(self) -> str:

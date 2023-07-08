@@ -1,5 +1,5 @@
 from django.contrib import admin
-from school_project.basic.models import Information,Team,Feedback,News,Events,Gallery,GalleryCategory,Contact,SubjectWeTeach
+from school_project.basic.models import Information,Team,Feedback,News,Events,Gallery,GalleryCategory,Contact,SubjectWeTeach,BOD, PrincipalMessage, DirectorMessage, AboutSchool
 
 
 admin.site.site_header = 'School Project'
@@ -52,4 +52,22 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(SubjectWeTeach)
 class SubAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(BOD)
+class BODAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(PrincipalMessage)
+class PrincipalAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(DirectorMessage)
+class DirectorAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AboutSchool)
+class AboutAdmin(admin.ModelAdmin):
     pass

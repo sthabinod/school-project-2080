@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from school_project.basic.models import Information,SubjectWeTeach, Feedback,News,Gallery,Team,Events, Contact,GalleryCategory
+from school_project.basic.models import Information,SubjectWeTeach, Feedback,News,Gallery,Team,Events, Contact,GalleryCategory,BOD,AboutSchool, DirectorMessage, PrincipalMessage
 from django.contrib import messages
 from django.core.mail import send_mail
 from config.settings.base import EMAIL_HOST_USER
@@ -12,12 +12,19 @@ class HomePage(View):
         feedbacks = Feedback.objects.all()
         latest_news = News.objects.all()[:4]
         gallery = Gallery.objects.all()[:4]
+        bod = BOD.objects.all()
+        principal_message = PrincipalMessage.objects.all()[:2]
+        director_message = DirectorMessage.objects.all()[:2]
+        
         data = {
             'info':info,
             'subjects':subjects,
             'feedbacks':feedbacks,
             'latest_news':latest_news,
-            'gallery':gallery
+            'gallery':gallery,
+            'bod':bod,
+            'director_message':director_message,
+            'principal_message':principal_message
             }
         return render(request, 'pages/home.html',data)
     
@@ -29,13 +36,20 @@ class AboutPage(View):
         latest_news = News.objects.all()[:4]
         gallery = Gallery.objects.all()[:4]
         teams = Team.objects.all()
+        bod = BOD.objects.all()
+        about_school = AboutSchool.objects.all()[:2]
+     
+        
+  
         data = {
             'info':info,
             'subjects':subjects,
             'feedbacks':feedbacks,
             'latest_news':latest_news,
             'gallery':gallery,
-            'teams':teams
+            'teams':teams,
+            'bod':bod,
+            'about_school':about_school
             }
         return render(request, 'pages/about.html',data)
     
@@ -157,3 +171,43 @@ class NewsSingle(View):
             'gallery':gallery,
             }
         return render(request, 'pages/single_news.html',data)
+    
+
+class PrincipalMessageView(View):
+    def get(self, request):
+        info = Information.objects.get(id=1)
+        gallery = Gallery.objects.all()[:4]
+        principal_message = PrincipalMessage.objects.all()
+        
+        data = {
+            'info':info,
+            'gallery':gallery,
+            'principal_message':principal_message
+            }
+        return render(request, 'pages/principal_message.html',data)
+    
+class DirectorMessageView(View):
+    def get(self, request):
+        info = Information.objects.get(id=1)
+        gallery = Gallery.objects.all()[:4]
+        director_message = DirectorMessage.objects.all()
+        
+        data = {
+            'info':info,
+            'gallery':gallery,
+            'director_message':director_message
+            }
+        return render(request, 'pages/director_message.html',data)
+    
+
+class MoreAbout(View):
+    def get(self, request):
+        info = Information.objects.get(id=1)
+        gallery = Gallery.objects.all()[:4]
+        about_school = AboutSchool.objects.all()
+        data = {
+            'info':info,
+            'gallery':gallery,
+            'about_school':about_school
+            }
+        return render(request, 'pages/about_more.html',data)
